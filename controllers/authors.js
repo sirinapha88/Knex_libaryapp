@@ -4,12 +4,12 @@ var knex = require('../db/knex');
 
 router.get('/',function(req,res){
 	knex('authors').then(function(authors){
-		res.render('index',{authors:authors});
+		res.render('authors/index',{authors:authors});
 	});
 });
 
 router.get('/new',function(req,res){
-	res.render("new");
+	res.render("authors/new");
 });
 
 router.post('/',function(req,res){
@@ -21,7 +21,7 @@ router.post('/',function(req,res){
 router.get('/:id/edit',function(req,res){
 	var id = req.params.id;
 	knex('authors').where({id:id}).first().then(function(author){
-		res.render("edit", {author:author});
+		res.render("authors/edit", {author:author});
 	});
 });
 
@@ -40,3 +40,4 @@ router.delete('/:id',function(req,res){
 });
 
 module.exports = router;
+

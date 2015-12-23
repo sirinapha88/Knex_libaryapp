@@ -1,0 +1,10 @@
+<h1> See all books!</h1>
+
+<% books.forEach(function(book){ %>
+  <form action="/authors/<%= authors.id %>/books/?_method=DELETE" method="POST">
+  	<%= book.id %>
+	<%= book.name %>
+	
+	<input type="submit" value="delete">
+		</form>	
+<% })%>
