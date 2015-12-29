@@ -1,9 +1,9 @@
 <h1> Create a new book</h1>
 
-<form action="/authors/<%= authors.id %>/books/" method="POST">
+<form action="/authors/<%= id%>/books/" method="POST">
 	<label for="name">Name:</label>
 	<input type="text" name="name" id="name">
-	<!-- <label for="name">Author_ID:</label>
-	<input type="text" name="author_id" id="author_id"> -->
+	<label for="name">Author_ID:</label>
+	<input type="text" name="author_id" id="author_id">
 	<input type="submit" value="Create Book">
 </form>

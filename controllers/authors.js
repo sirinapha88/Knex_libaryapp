@@ -1,20 +1,24 @@
 var express = require("express");
 var router = express.Router();
 var knex = require('../db/knex');
+var bookRoutes = require("./books");
 
+router.use("/books", bookRoutes);
+
+// Index
 router.get('/',function(req,res){
 	knex('authors').then(function(authors){
 		res.render('authors/index',{authors:authors});
 	});
 });
-
+// New
 router.get('/new',function(req,res){
 	res.render("authors/new");
 });
-
+//Create
 router.post('/',function(req,res){
 	knex('authors').insert(req.body).then(function(){
-		res.redirect('./authors');
+		res.redirect('/authors');
 	});
 });
 
