@@ -1,9 +1,19 @@
-<h1> Create a new book</h1>
-
-<form action="/authors/<%= id%>/books/" method="POST">
-	<label for="name">Name:</label>
-	<input type="text" name="name" id="name">
-	<label for="name">Author_ID:</label>
-	<input type="text" name="author_id" id="author_id">
-	<input type="submit" value="Create Book">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<title>New Book</title>
+</head>
+<body>
+	<div class="container-fluid">
+	  	<h1>Enter a new book</h1>
+	  	<form action="/authors/books/<%= author.id %>/new" method="POST">
+		    Author: <%= author.name %> <br>
+		    <label for="book">Book: </label>
+		    <input type="text" name="name">
+		    <input type="submit">
+  		</form>
+  	</div>
+</body>
+</html>

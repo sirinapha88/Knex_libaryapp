@@ -1,0 +1,9 @@
+body{
+	width: 1000px;
+	margin-left: 100px;
+}
+
+input[type="submit"] {
+	float: right;
+	color: red;
+}
