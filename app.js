@@ -16,6 +16,10 @@ app.use(express.static(__dirname + '/asset/'));
 app.use('/authors', authorRouter);
 app.use('/authors/books', bookRouter);
 
+app.get('/',function(req,res){
+	res.redirect('/authors');
+});
+
 app.listen(3000, function(){
 	console.log("Server started on port 3000");
 });

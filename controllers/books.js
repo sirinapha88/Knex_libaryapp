@@ -3,6 +3,15 @@ var router = express.Router();
 var knex = require('../db/knex');
 var locus = require("locus");
 
+router.get('/',function(req,res){
+	knex("authors").innerJoin("books", "books.author_id", "authors.id")
+	.then(function(books){
+		knex("authors").first().then(function(author) {
+			res.render("displayAll", { author: author, books : books});
+		});
+	});	
+});
+
 router.get('/:author_id',function(req,res){
 	var id = req.params.author_id;
 	 knex("authors")
