@@ -3,6 +3,7 @@ var router = express.Router();
 var knex = require('../db/knex');
 var locus = require("locus");
 
+// Show All Books
 router.get('/',function(req,res){
 	knex("authors").innerJoin("books", "books.author_id", "authors.id")
 	.then(function(books){
@@ -11,30 +12,30 @@ router.get('/',function(req,res){
 		});
 	});	
 });
-
+// Show book from author id
 router.get('/:author_id',function(req,res){
 	var id = req.params.author_id;
 	 knex("authors")
     .innerJoin("books", "books.author_id", "authors.id")
     .where("author_id", id)
     .then(function(books) {
-      //  Get the author's name before rendering books page
+      
       knex("authors").first().where("id", id).then(function(author) {
         res.render("books/index", {
           author: author,
           books : books
         });
-      })
+      });
     });
 });
-
+// New
 router.get('/:author_id/new',function(req,res){
 	var id = req.params.author_id;
 	knex("authors").where({id:id}).first().then(function(author){
 		res.render('books/new', {author:author});
 	});
 });
-
+// Post
 router.post('/:author_id/new',function(req,res){
 	
 	var name = req.body.name;
@@ -44,7 +45,7 @@ router.post('/:author_id/new',function(req,res){
 		res.redirect('/authors');
 	});
 });
-
+// Edit
 router.get('/:author_id/:id/edit',function(req,res){
 	var id = req.params.id;
 	var author_id = req.params.author_id;
@@ -52,7 +53,7 @@ router.get('/:author_id/:id/edit',function(req,res){
 		res.render("books/edit", {author_id:author_id,book:book});
 	});
 });
-
+// Update
 router.put('/:author_id/:id',function(req,res){
 	var id = req.params.id;
 	var author_id = req.params.author_id;
@@ -60,5 +61,8 @@ router.put('/:author_id/:id',function(req,res){
 		res.redirect('/authors/books/' + author_id);
 	});
 });
+
+
+
 
 module.exports = router;

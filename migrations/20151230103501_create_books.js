@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
  	return knex.schema.createTable('books', function(table){
  		table.increments();// id serial primary key

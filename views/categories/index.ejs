@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+   <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div class="container-fluid">
+    <h1>All Categories</h1>
+    <table class="table">
+    <thead>
+      <tr>
+       <th>Category ID</th>
+        <th>Category Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <% categories.forEach(function(category) { %>
+        
+          <td><%= category.id %></td>
+          <td><%= category.name %></td>
+
+          <td>
+            <form action="/categories/<%= category.id %>/edit?_method=GET" method="GET">
+              <input type="submit" value="Edit">
+            </form>
+          
+            <form action="/categories/<%= category.id %>/?_method=DELETE" method="POST">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+      </tbody>
+    </table>
+
+    <form action="categories/new" method="GET">
+      <input type="submit" value="Add New Category">
+    </form>
+
+    <form action="/authors" method="GET">
+      <input type="submit" value="Back to author">
+    </form>
+
+    <form action="/authors/books" method="GET">
+      <input type="submit" value="See all book">
+    </form>
+  </div>
+</body>
+</html>

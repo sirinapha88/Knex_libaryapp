@@ -5,7 +5,7 @@ var morgan = require("morgan");
 var methodOverride = require("method-override");
 var authorRouter = require("./controllers/authors.js");
 var bookRouter = require("./controllers/books.js");
-
+var categoriesRouter = require("./controllers/categories.js");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
@@ -15,6 +15,7 @@ app.use(express.static(__dirname + '/asset/'));
 
 app.use('/authors', authorRouter);
 app.use('/authors/books', bookRouter);
+app.use('/categories', categoriesRouter);
 
 app.get('/',function(req,res){
 	res.redirect('/authors');
